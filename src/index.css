@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --navy: #0a1128;
+    --ink: #0f172a;
+    --slate: #475569;
+    --line: #e2e8f0;
+    --paper: #f9faf8;
+}
+
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+body {
+    margin: 0;
+    font-family: "Manrope", sans-serif;
+    background-color: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.font-serif-display {
+    font-family: "Cormorant Garamond", serif;
+}
+
+::selection {
+    background: var(--navy);
+    color: #f8fafc;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--navy);
+}
+
+.noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+}
+
+.hero-grid-lines {
+    background-image:
+        linear-gradient(to right, rgba(248, 250, 252, 0.045) 1px, transparent 1px);
+    background-size: clamp(80px, 12vw, 160px) 100%;
+}
+
+.text-outline {
+    -webkit-text-stroke: 1px rgba(248, 250, 252, 0.09);
+    color: transparent;
+}
+
+.nav-link-underline {
+    position: relative;
+}
+
+.nav-link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
