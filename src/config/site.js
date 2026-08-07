@@ -86,17 +86,17 @@ export const CHAPTERS = [
     span: "lg:col-span-5",
   },
   {
-    no: "03",
-    title: "Mergers & Acquisitions",
-    body: "The anatomy of a deal — teasers, memoranda, buyer screening, and process discipline from first contact to close.",
-    span: "lg:col-span-5",
-  },
-  {
-    no: "04",
-    title: "Corporate Finance",
-    body: "Capital structure, allocation decisions, and the financial mechanics that drive enterprise value.",
-    span: "lg:col-span-7",
-  },
+  no: "03",
+  title: "Corporate Finance",
+  body: "Capital structure, allocation decisions, and the financial mechanics that drive enterprise value.",
+  span: "lg:col-span-7",
+},
+{
+  no: "04",
+  title: "Mergers & Acquisitions",
+  body: "The anatomy of a deal — teasers, memoranda, buyer screening, and process discipline from first contact to close.",
+  span: "lg:col-span-5",
+},
   {
     no: "05",
     title: "Investment Research",
