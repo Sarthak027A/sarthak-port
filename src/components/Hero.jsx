@@ -2,22 +2,12 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { SITE } from "@/config/site";
 import { useFileGate } from "@/components/files/FileGate";
 
-const Cube = () => (
-  <div className="cube-scene flex items-center justify-center" aria-hidden="true">
-    <div className="cube">
-      {["front", "back", "right", "left", "top", "bottom"].map((f) => (
-        <div key={f} className={`cube__face cube__face--${f}`} />
-      ))}
-    </div>
-  </div>
-);
-
 const Hero = () => {
   const openFile = useFileGate();
 
   return (
-    <section id="home" className="relative overflow-hidden px-4 pb-24 pt-36 sm:px-6 sm:pt-44" data-testid="hero-section">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 lg:grid-cols-[1.35fr_1fr]">
+    <section id="home" className="relative overflow-hidden px-4 pb-24 pt-24 sm:px-6 lg:pt-44" data-testid="hero-section">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 lg:gap-16 lg:grid-cols-[1.35fr_1fr]">
         <div className="hero-in">
           <a
             href="#contact"
@@ -56,9 +46,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hidden justify-center lg:flex" data-testid="hero-cube">
-          <Cube />
-        </div>
+        {/* Placeholder that positions the floating <ScrollCube /> in the hero */}
+        <div className="order-first mx-auto h-[150px] w-[150px] lg:order-none lg:h-[340px] lg:w-[340px]" data-cube-anchor data-testid="hero-cube" />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { SITE, NAV_LINKS } from "@/config/site";
 import { useFileGate } from "@/components/files/FileGate";
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const openFile = useFileGate();
+  const progress = useRef(null);
 
   useEffect(() => {
     let ticking = false;
@@ -14,7 +15,9 @@ const Navbar = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
         setScrolled(window.scrollY > 8);
+        if (progress.current) progress.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
         ticking = false;
       });
     };
@@ -63,6 +66,13 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      <span
+        ref={progress}
+        className="absolute bottom-[-1px] left-0 h-px w-full origin-left bg-[var(--iris)]"
+        style={{ transform: "scaleX(0)" }}
+        aria-hidden="true"
+      />
 
       {open && (
         <nav className="border-t border-[var(--hairline)] pb-4 md:hidden" data-testid="mobile-menu">

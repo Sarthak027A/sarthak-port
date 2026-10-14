@@ -135,37 +135,6 @@ body {
     color: var(--white);
 }
 
-/* Hero cube — pure CSS 3D, compositor-only (no WebGL, no JS per frame) */
-.cube-scene {
-    perspective: 900px;
-}
-.cube {
-    position: relative;
-    width: var(--cube, 220px);
-    height: var(--cube, 220px);
-    transform-style: preserve-3d;
-    animation: cube-spin 28s linear infinite;
-    will-change: transform;
-}
-.cube__face {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(145deg, #0d0f12 0%, #000 70%);
-    border: 1px solid var(--hairline);
-    backface-visibility: hidden;
-}
-.cube__face--front  { transform: translateZ(calc(var(--cube, 220px) / 2)); }
-.cube__face--back   { transform: rotateY(180deg) translateZ(calc(var(--cube, 220px) / 2)); }
-.cube__face--right  { transform: rotateY(90deg) translateZ(calc(var(--cube, 220px) / 2)); }
-.cube__face--left   { transform: rotateY(-90deg) translateZ(calc(var(--cube, 220px) / 2)); }
-.cube__face--top    { transform: rotateX(90deg) translateZ(calc(var(--cube, 220px) / 2)); background: #111418; }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube, 220px) / 2)); }
-
-@keyframes cube-spin {
-    from { transform: rotateX(-24deg) rotateY(0deg); }
-    to   { transform: rotateX(-24deg) rotateY(360deg); }
-}
-
 /* Entrance reveal — driven by an IntersectionObserver toggling .is-visible */
 .reveal {
     opacity: 0;
@@ -188,6 +157,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .hero-in { animation: none; }
     html { scroll-behavior: auto; }
-    .cube { animation: none; transform: rotateX(-24deg) rotateY(-35deg); }
     .reveal { opacity: 1; transform: none; transition: none; }
 }

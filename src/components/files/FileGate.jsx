@@ -1,6 +1,6 @@
 import { createContext, lazy, Suspense, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Eye, Mail, X } from "lucide-react";
-import { FILES } from "@/config/site";
+import { FILES, SITE } from "@/config/site";
 
 const PdfViewer = lazy(() => import("./PdfViewer"));
 
@@ -70,6 +70,9 @@ const EmailForm = ({ fileId, onViewInstead }) => {
           {status === "sending" ? "Sending…" : "Send"}
         </button>
       </div>
+      <p className="text-xs leading-[1.5] text-[var(--iron)]">
+        Sent personally from <span className="font-mono text-[var(--iris)]">{SITE.email}</span> — one email, no mailing list.
+      </p>
       {status === "error" && (
         <p className="text-sm text-[var(--red)]" role="alert" data-testid="email-error">
           {message}{" "}

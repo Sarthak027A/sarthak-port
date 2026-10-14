@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import ScrollCube from "@/components/ScrollCube";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Project from "@/components/Project";
@@ -12,6 +13,7 @@ function App() {
     <FileGateProvider>
       <div className="min-h-screen bg-black text-[var(--bone)]">
         <Navbar />
+        <ScrollCube />
         <main>
           <Hero />
           <About />
