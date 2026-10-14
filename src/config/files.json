@@ -1,0 +1,8 @@
+{
+  "_note": "Shared by the website (src/) and the email function (api/send-file.js). Files live in public/files/.",
+  "resume": { "title": "Résumé", "subject": "Sarthak Anand — Résumé", "path": "/files/Sarthak-Anand-Resume.pdf", "type": "pdf" },
+  "teaser": { "title": "Project Ironbend — Blind Teaser", "subject": "Project Ironbend — Blind Teaser", "path": "/files/ironbend-blind-teaser.pdf", "type": "pdf" },
+  "cim": { "title": "Project Ironbend — CIM", "subject": "Project Ironbend — Confidential Information Memorandum", "path": "/files/ironbend-cim.pdf", "type": "pdf" },
+  "model": { "title": "Project Ironbend — Financial Model", "subject": "Project Ironbend — Financial Model", "path": "/files/ironbend-financial-model.xlsx", "type": "xlsx" },
+  "tracker": { "title": "Project Ironbend — Buyer Tracker", "subject": "Project Ironbend — Buyer Tracker", "path": "/files/ironbend-buyer-tracker.xlsx", "type": "xlsx" }
+}

@@ -2,106 +2,192 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design tokens — "black velvet with violet" (see DESIGN.md) */
 :root {
-    --navy: #0a1128;
-    --ink: #0f172a;
-    --slate: #475569;
-    --line: #e2e8f0;
-    --paper: #f9faf8;
+    --void: #000000;
+    --hairline: #292d30;
+    --white: #ffffff;
+    --bone: #f0f0f0;
+    --ash: #a1a4a5;
+    --smoke: #abafb4;
+    --iron: #6e727a;
+    --charcoal: #464a4d;
+    --iris: #9281f7;
+    --iris-glow: #baa7ff;
+    --iris-gradient: linear-gradient(to right bottom, rgb(146, 129, 247) 0%, rgb(154, 84, 220) 100%);
+    --sky: #70b8ff;
+    --green: #3ad389;
+    --red: #ff9592;
+    --amber: #ffca16;
+    --lift: #0b0e14;
+    --surface-gradient: linear-gradient(rgb(27, 27, 27), rgb(3, 3, 3));
+
+    --font-display: "Playfair Display", "Times New Roman", serif;
+    --font-heading: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    color-scheme: dark;
 }
 
-html.lenis,
-html.lenis body {
-    height: auto;
-}
-
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+    background: var(--void);
 }
 
 body {
     margin: 0;
-    font-family: "Manrope", sans-serif;
-    background-color: var(--paper);
-    color: var(--ink);
+    font-family: var(--font-body);
+    background: var(--void);
+    color: var(--bone);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
-.font-serif-display {
-    font-family: "Cormorant Garamond", serif;
-}
-
 ::selection {
-    background: var(--navy);
-    color: #f8fafc;
+    background: var(--iris);
+    color: var(--white);
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--paper);
-}
-::-webkit-scrollbar-thumb {
-    background: #94a3b8;
-    border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--navy);
+.font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
 }
 
-.noise::before {
-    content: "";
+.font-heading {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+/* Ghost button — the only button style */
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 12px 16px;
+    transition: border-color 150ms ease-out, background-color 150ms ease-out;
+    cursor: pointer;
+}
+.btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.btn-ghost:focus-visible,
+.focus-ring:focus-visible {
+    outline: 2px solid var(--iris);
+    outline-offset: 2px;
+}
+.btn-ghost:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.card {
+    background: var(--void);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--ash);
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--ash);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.link-chevron {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--bone);
+    transition: color 150ms ease-out;
+}
+.link-chevron:hover {
+    color: var(--white);
+}
+
+/* Hero cube — pure CSS 3D, compositor-only (no WebGL, no JS per frame) */
+.cube-scene {
+    perspective: 900px;
+}
+.cube {
+    position: relative;
+    width: var(--cube, 220px);
+    height: var(--cube, 220px);
+    transform-style: preserve-3d;
+    animation: cube-spin 28s linear infinite;
+    will-change: transform;
+}
+.cube__face {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
+    background: linear-gradient(145deg, #0d0f12 0%, #000 70%);
+    border: 1px solid var(--hairline);
+    backface-visibility: hidden;
+}
+.cube__face--front  { transform: translateZ(calc(var(--cube, 220px) / 2)); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(calc(var(--cube, 220px) / 2)); }
+.cube__face--right  { transform: rotateY(90deg) translateZ(calc(var(--cube, 220px) / 2)); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(calc(var(--cube, 220px) / 2)); }
+.cube__face--top    { transform: rotateX(90deg) translateZ(calc(var(--cube, 220px) / 2)); background: #111418; }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube, 220px) / 2)); }
+
+@keyframes cube-spin {
+    from { transform: rotateX(-24deg) rotateY(0deg); }
+    to   { transform: rotateX(-24deg) rotateY(360deg); }
 }
 
-.hero-grid-lines {
-    background-image:
-        linear-gradient(to right, rgba(248, 250, 252, 0.045) 1px, transparent 1px);
-    background-size: clamp(80px, 12vw, 160px) 100%;
+/* Entrance reveal — driven by an IntersectionObserver toggling .is-visible */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
 }
 
-.text-outline {
-    -webkit-text-stroke: 1px rgba(248, 250, 252, 0.09);
-    color: transparent;
+.hero-in {
+    animation: fade-up 700ms ease-out both;
+}
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
 }
 
-.nav-link-underline {
-    position: relative;
-}
-
-.nav-link-underline::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    height: 1px;
-    width: 100%;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nav-link-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
+@media (prefers-reduced-motion: reduce) {
+    .hero-in { animation: none; }
+    html { scroll-behavior: auto; }
+    .cube { animation: none; transform: rotateX(-24deg) rotateY(-35deg); }
+    .reveal { opacity: 1; transform: none; transition: none; }
 }

@@ -1,18 +1,15 @@
-# Drop your files here
+# Portfolio files
 
-Place your Project Ironbend deliverables and résumé in this folder using
-these exact filenames and every button on the site works instantly —
-no code changes required:
+Every file button on the site opens a popup: **View on this site** (in-site viewer)
+or **Send it to my email** (handled by `api/send-file.js`).
 
-| File                          | Used by                          |
-| ----------------------------- | -------------------------------- |
-| `ironbend-blind-teaser.pdf`   | Blind Teaser — View PDF          |
-| `ironbend-cim.pdf`            | CIM — View PDF                   |
-| `ironbend-financial-model.xlsx` | Financial Model — Download Excel |
-| `ironbend-buyer-universe.xlsx`  | Buyer Universe — Download Excel  |
-| `ironbend-buyer-tracker.xlsx`   | Buyer Tracker — Download Excel   |
-| `Sarthak-Anand-Resume.pdf`    | Résumé buttons (hero + contact)  |
+Files are listed in `src/config/files.json`. To replace one, overwrite the file here
+with the same name. To add one, add it here and add an entry to `files.json`.
 
-Prefer external hosting (Google Drive / Dropbox)? Open
-`frontend/src/config/site.js` and replace the `/files/...` paths with
-your share links. Email and LinkedIn URL are edited in the same file.
+| File | Entry in files.json |
+| --- | --- |
+| `Sarthak-Anand-Resume.pdf` | `resume` |
+| `ironbend-blind-teaser.pdf` | `teaser` |
+| `ironbend-cim.pdf` | `cim` |
+| `ironbend-financial-model.xlsx` | `model` (opens in the Office online viewer) |
+| `ironbend-buyer-tracker.xlsx` | `tracker` (opens in the Office online viewer) |

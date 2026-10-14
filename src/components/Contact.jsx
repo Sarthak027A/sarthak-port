@@ -1,105 +1,55 @@
-import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, Download, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail, Phone } from "lucide-react";
 import { SITE } from "@/config/site";
+import Reveal from "@/components/Reveal";
+import { useFileGate } from "@/components/files/FileGate";
 
-const EASE = [0.22, 1, 0.36, 1];
+const Contact = () => {
+  const openFile = useFileGate();
 
-const TEXTURE =
-  "https://images.unsplash.com/photo-1608501821300-4f99e58bba77?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRhcmslMjBuYXZ5JTIwdGV4dHVyZXxlbnwwfHx8fDE3ODU5Njg2NjZ8MA&ixlib=rb-4.1.0&q=85";
+  return (
+    <section id="contact" className="border-t border-[var(--hairline)] px-4 pt-24 sm:px-6" data-testid="contact-section">
+      <div className="mx-auto max-w-[1200px]">
+        <Reveal>
+          <p className="eyebrow">Contact</p>
+          <h2 className="font-display mt-6 text-[48px] leading-none text-[var(--white)] sm:text-[77px]">Let&rsquo;s build something.</h2>
+          <p className="mt-6 max-w-xl text-base leading-[1.6] text-[var(--ash)] sm:text-lg">
+            Open to roles and mandates across financial modeling, valuation, M&amp;A and business
+            development — from building the model to building the pipeline.
+          </p>
+        </Reveal>
 
-const Contact = () => (
-  <section
-    id="contact"
-    className="noise relative overflow-hidden bg-[#0A1128] px-6 pb-10 pt-28 lg:px-10 lg:pt-40"
-    data-testid="contact-section"
-  >
-    <div
-      className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay"
-      style={{ backgroundImage: `url(${TEXTURE})` }}
-      aria-hidden="true"
-    />
+        <Reveal delay={80} className="card mt-12 p-6 sm:p-8" data-testid="contact-actions">
+          <p className="font-mono text-xs text-[var(--iron)]">to:</p>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="focus-ring mt-2 inline-block break-all rounded font-mono text-base text-[var(--iris)] transition-colors duration-150 hover:text-[var(--iris-glow)] sm:text-xl"
+            data-testid="contact-email-button"
+          >
+            {SITE.email}
+          </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={`mailto:${SITE.email}`} className="btn-ghost">
+              <Mail size={15} strokeWidth={1.5} /> Email
+            </a>
+            <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="btn-ghost" data-testid="contact-phone-button">
+              <Phone size={15} strokeWidth={1.5} /> {SITE.phone}
+            </a>
+            <a href={SITE.linkedin} target="_blank" rel="noreferrer" className="btn-ghost" data-testid="contact-linkedin-button">
+              <Linkedin size={15} strokeWidth={1.5} /> LinkedIn <ArrowUpRight size={14} strokeWidth={1.5} />
+            </a>
+            <button onClick={() => openFile(SITE.resumeFile)} className="btn-ghost" data-testid="contact-resume-button">
+              Résumé
+            </button>
+          </div>
+        </Reveal>
 
-    <div className="relative z-10 mx-auto max-w-7xl">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.9, ease: EASE }}
-      >
-        <p className="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.4em] text-slate-400">
-          <span className="h-px w-10 bg-slate-600" />
-          Contact
-        </p>
-        <h2 className="font-serif-display mt-6 max-w-3xl text-5xl font-medium leading-[1.02] tracking-tight text-slate-50 sm:text-6xl lg:text-7xl">
-          Let&rsquo;s build <span className="italic text-slate-400">something.</span>
-        </h2>
-        <p className="mt-6 max-w-xl text-sm leading-relaxed text-slate-400 sm:text-base">
-          Open to roles and mandates across financial modeling, valuation, M&amp;A, and business
-          development — from building the model to building the pipeline. Full Project Ironbend
-          materials available on request.
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
-        className="mt-14 flex flex-wrap items-center gap-4"
-        data-testid="contact-actions"
-      >
-        <a
-          href={`mailto:${SITE.email}`}
-          data-testid="contact-email-button"
-          className="group inline-flex max-w-full items-center gap-3 break-all bg-slate-50 px-7 py-3.5 text-xs font-semibold tracking-[0.12em] text-slate-900 transition-transform duration-300 hover:-translate-y-0.5"
-        >
-          <Mail size={15} />
-          {SITE.email}
-        </a>
-        <a
-          href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-          data-testid="contact-phone-button"
-          className="inline-flex items-center gap-3 border border-slate-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300 transition-colors duration-300 hover:border-slate-300 hover:text-white"
-        >
-          <Phone size={15} />
-          {SITE.phone}
-        </a>
-        <a
-          href={SITE.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          data-testid="contact-linkedin-button"
-          className="inline-flex items-center gap-3 border border-slate-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300 transition-colors duration-300 hover:border-slate-300 hover:text-white"
-        >
-          <Linkedin size={15} />
-          LinkedIn
-          <ArrowUpRight size={13} />
-        </a>
-        <a
-          href={SITE.resume}
-          target="_blank"
-          rel="noreferrer"
-          data-testid="contact-resume-button"
-          className="inline-flex items-center gap-3 border border-slate-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300 transition-colors duration-300 hover:border-slate-300 hover:text-white"
-        >
-          <Download size={15} />
-          Résumé
-        </a>
-      </motion.div>
-
-      <footer
-        className="mt-24 flex flex-col gap-4 border-t border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between"
-        data-testid="footer"
-      >
-        <p className="text-[11px] uppercase tracking-[0.25em] text-slate-500">
-          © {new Date().getFullYear()} {SITE.name}
-        </p>
-        <p className="text-[11px] uppercase tracking-[0.25em] text-slate-600">
-          NITK · CFA Level I · Finance &amp; Business Development
-        </p>
-      </footer>
-    </div>
-  </section>
-);
+        <footer className="mt-24 flex flex-col gap-2 border-t border-[var(--hairline)] py-8 text-sm text-[var(--ash)] sm:flex-row sm:justify-between" data-testid="footer">
+          <p>© {new Date().getFullYear()} {SITE.name}</p>
+          <p>NITK · CFA Level I</p>
+        </footer>
+      </div>
+    </section>
+  );
+};
 
 export default Contact;
