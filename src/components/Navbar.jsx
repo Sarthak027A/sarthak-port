@@ -45,7 +45,7 @@ const Navbar = () => {
               scrolled ? "text-slate-500" : "text-slate-400"
             }`}
           >
-            Advisory &amp; Research
+            {SITE.role}
           </span>
         </button>
 

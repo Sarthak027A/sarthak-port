@@ -31,11 +31,12 @@ const Contact = () => (
           Contact
         </p>
         <h2 className="font-serif-display mt-6 max-w-3xl text-5xl font-medium leading-[1.02] tracking-tight text-slate-50 sm:text-6xl lg:text-7xl">
-          Let&rsquo;s talk <span className="italic text-slate-400">transactions.</span>
+          Let&rsquo;s build <span className="italic text-slate-400">something.</span>
         </h2>
         <p className="mt-6 max-w-xl text-sm leading-relaxed text-slate-400 sm:text-base">
-          Open to conversations around financial modeling, valuation, M&amp;A, and investment
-          research — and to sharing the full Project Ironbend materials on request.
+          Open to roles and mandates across financial modeling, valuation, M&amp;A, and business
+          development — from building the model to building the pipeline. Full Project Ironbend
+          materials available on request.
         </p>
       </motion.div>
 
@@ -50,7 +51,7 @@ const Contact = () => (
         <a
           href={`mailto:${SITE.email}`}
           data-testid="contact-email-button"
-          className="group inline-flex items-center gap-3 bg-slate-50 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition-transform duration-300 hover:-translate-y-0.5"
+          className="group inline-flex max-w-full items-center gap-3 break-all bg-slate-50 px-7 py-3.5 text-xs font-semibold tracking-[0.12em] text-slate-900 transition-transform duration-300 hover:-translate-y-0.5"
         >
           <Mail size={15} />
           {SITE.email}
@@ -91,10 +92,10 @@ const Contact = () => (
         data-testid="footer"
       >
         <p className="text-[11px] uppercase tracking-[0.25em] text-slate-500">
-          © 2026 {SITE.name}
+          © {new Date().getFullYear()} {SITE.name}
         </p>
         <p className="text-[11px] uppercase tracking-[0.25em] text-slate-600">
-          NITK · CFA Level I · Financial Modeling &amp; Advisory
+          NITK · CFA Level I · Finance &amp; Business Development
         </p>
       </footer>
     </div>

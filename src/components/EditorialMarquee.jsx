@@ -8,8 +8,11 @@ const TERMS = [
   "Corporate Finance",
   "Transaction Analysis",
   "Due Diligence",
+  "Pipeline Building",
+  "Lead Generation",
   "Three-Statement Models",
   "Comparable Companies",
+  "Business Development",
   "Discounted Cash Flow",
 ];
 

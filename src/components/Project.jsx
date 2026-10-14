@@ -79,8 +79,24 @@ const Project = () => (
         </p>
       </motion.div>
 
+      <motion.dl
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+        className="mt-16 grid grid-cols-2 gap-px border border-slate-200 bg-slate-200 lg:grid-cols-4"
+        data-testid="project-snapshot"
+      >
+        {PROJECT.snapshot.map((m) => (
+          <div key={m.label} className="bg-white px-6 py-7 lg:px-8">
+            <dt className="text-[10px] font-medium uppercase tracking-[0.25em] text-slate-400">{m.label}</dt>
+            <dd className="font-serif-display mt-2 text-3xl font-medium tracking-tight text-slate-900 lg:text-4xl">{m.value}</dd>
+          </div>
+        ))}
+      </motion.dl>
+
       <div
-        className="pointer-events-none mt-20 h-40 rounded-sm opacity-70"
+        className="pointer-events-none mt-12 h-40 rounded-sm opacity-70"
         style={{
           background:
             "radial-gradient(ellipse 55% 100% at 50% 0%, rgba(10,17,40,0.07), transparent 70%)",

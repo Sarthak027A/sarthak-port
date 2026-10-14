@@ -125,7 +125,7 @@ const Hero = () => {
           <MaskedLine delay={0.15}>
             <span className="mb-8 flex items-center gap-4 text-[11px] font-medium uppercase tracking-[0.4em] text-slate-400">
               <span className="h-px w-10 bg-slate-500" />
-              Portfolio — Finance &amp; Advisory
+              Portfolio — {SITE.role}
             </span>
           </MaskedLine>
 
@@ -163,7 +163,7 @@ const Hero = () => {
                 data-testid="hero-view-project-button"
                 className="group inline-flex items-center gap-3 bg-slate-50 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-900 transition-transform duration-300 hover:-translate-y-0.5"
               >
-                View Project Ironbend
+                View Work
                 <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <a

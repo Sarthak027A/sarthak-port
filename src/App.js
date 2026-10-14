@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import EditorialMarquee from "@/components/EditorialMarquee";
 import About from "@/components/About";
 import Project from "@/components/Project";
+import Pipeline from "@/components/Pipeline";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 
@@ -34,6 +35,7 @@ function App() {
         <EditorialMarquee />
         <About />
         <Project />
+        <Pipeline />
         <Skills />
         <Contact />
       </main>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { SKILLS } from "@/config/site";
+import { SKILL_GROUPS } from "@/config/site";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -23,24 +23,37 @@ const Skills = () => (
           </h2>
         </div>
         <p className="max-w-md text-sm leading-relaxed text-slate-600">
-          The core disciplines and tools I apply across modeling, valuation, and transaction work.
+          The disciplines and tools I apply across modeling, valuation, transactions, and revenue generation.
         </p>
       </motion.div>
 
-      <div className="mt-14 flex flex-wrap gap-3" data-testid="skills-grid">
-        {SKILLS.map((skill, i) => (
-          <motion.span
-            key={skill}
-            initial={{ opacity: 0, y: 18 }}
+      <div className="mt-14 grid grid-cols-1 gap-px border border-slate-200 bg-slate-200 md:grid-cols-2" data-testid="skills-grid">
+        {SKILL_GROUPS.map((group, gi) => (
+          <motion.div
+            key={group.title}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: i * 0.05, ease: EASE }}
-            whileHover={{ y: -3 }}
-            className="cursor-default border border-slate-300 bg-white px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-slate-700 shadow-sm transition-colors duration-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
-            data-testid={`skill-badge-${skill.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+            transition={{ duration: 0.7, delay: (gi % 2) * 0.1, ease: EASE }}
+            className="bg-white p-8 lg:p-10"
+            data-testid={`skill-group-${group.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
           >
-            {skill}
-          </motion.span>
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-900">{group.title}</h3>
+              <span className="font-serif-display text-lg italic text-slate-300">0{gi + 1}</span>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {group.items.map((skill) => (
+                <span
+                  key={skill}
+                  className="cursor-default border border-slate-300 bg-white px-4 py-2 text-[11px] font-medium uppercase tracking-[0.14em] text-slate-700 transition-colors duration-300 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
+                  data-testid={`skill-badge-${skill.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
