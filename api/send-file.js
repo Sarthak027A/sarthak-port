@@ -107,16 +107,17 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: "Please enter a valid email address." });
   }
 
-  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
-  if (rateLimited(ip) || rateLimited(to.toLowerCase())) {
-    return res.status(429).json({ error: "Too many requests — please try again in a few minutes." });
-  }
-
   const dryRun = process.env.MAIL_DRY_RUN === "1";
   const user = process.env.GMAIL_USER || OWNER.email;
   const pass = process.env.GMAIL_APP_PASSWORD;
   if (!dryRun && !pass) {
     return res.status(503).json({ error: "Email delivery isn't set up yet." });
+  }
+
+  // Checked after config so a misconfigured deploy doesn't burn visitors' quota.
+  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
+  if (rateLimited(ip) || rateLimited(to.toLowerCase())) {
+    return res.status(429).json({ error: "Too many requests — please try again in a few minutes." });
   }
 
   const fileUrl = `${SITE_URL}${encodeURI(file.path)}`;
