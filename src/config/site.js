@@ -61,7 +61,7 @@ export const PROJECT = {
       title: "Financial Model",
       format: "XLSX",
       description:
-        "A fully linked three-statement model with Low/Base/High scenario switching, EV/EBITDA-based valuation with sensitivity analysis, sources & uses, advisor fee build, and illustrative sponsor returns.",
+        "A fully linked three-statement model with Low/Base/High scenario switching, EV/EBITDA valuation cross-checked by a DCF and precedent transactions, sources & uses with seller net proceeds, advisor fee build, and illustrative sponsor returns.",
     },
     {
       id: "tracker",
@@ -71,7 +71,7 @@ export const PROJECT = {
       title: "Buyer Tracker",
       format: "XLSX",
       description:
-        "A process-management tracker logging outreach status, NDA execution, diligence stage, and next steps for every party in the buyer universe.",
+        "A process-management tracker following every party in the buyer universe from teaser and NDA through IOIs, management meetings, LOI and diligence, with a live funnel dashboard.",
     },
   ],
 };
