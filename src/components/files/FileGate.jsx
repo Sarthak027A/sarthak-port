@@ -7,8 +7,11 @@ const PdfViewer = lazy(() => import("./PdfViewer"));
 const FileGateContext = createContext(() => {});
 export const useFileGate = () => useContext(FileGateContext);
 
-const officeEmbed = (path) =>
-  `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(window.location.origin + encodeURI(path))}`;
+// The Office viewer caches by URL, so a ?v= version forces it to fetch a replaced file.
+const officeEmbed = (path, version) =>
+  `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
+    window.location.origin + encodeURI(path) + (version ? `?v=${encodeURIComponent(version)}` : "")
+  )}`;
 
 const EmailForm = ({ fileId, onViewInstead }) => {
   const [email, setEmail] = useState("");
@@ -91,7 +94,7 @@ const Viewer = ({ file }) =>
       <PdfViewer src={file.path} />
     </Suspense>
   ) : (
-    <iframe title={file.title} src={officeEmbed(file.path)} className="h-full w-full border-0 bg-white" data-testid="xlsx-viewer" />
+    <iframe title={file.title} src={officeEmbed(file.path, file.version)} className="h-full w-full border-0 bg-white" data-testid="xlsx-viewer" />
   );
 
 const FileModal = ({ fileId, startInViewer, onClose }) => {

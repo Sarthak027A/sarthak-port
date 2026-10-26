@@ -1,5 +1,5 @@
 {
-  "_note": "Shared by the website (src/) and the email function (api/send-file.js). Files live in public/files/.",
+  "_note": "Shared by the website (src/) and the email function (api/send-file.js). Files live in public/files/. When you replace an .xlsx, bump its \"version\": the Office online viewer caches by URL and would keep showing the old copy.",
   "resume": {
     "title": "Résumé",
     "subject": "Sarthak Anand — my résumé, as requested",
@@ -22,7 +22,8 @@
     "title": "Project Ironbend — Financial Model",
     "subject": "Project Ironbend financial model (sample work) — Sarthak Anand",
     "path": "/files/ironbend-financial-model.xlsx",
-    "type": "xlsx"
+    "type": "xlsx",
+    "version": "2026-10-26"
   },
   "tracker": {
     "title": "Project Ironbend — Buyer Tracker",
